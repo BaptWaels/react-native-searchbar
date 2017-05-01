@@ -33,6 +33,7 @@ export default class Search extends Component {
     closeButtonAccessibilityLabel: PropTypes.string,
     backCloseSize: PropTypes.number,
     fontSize: PropTypes.number,
+    width: PropTypes.number,
     heightAdjust: PropTypes.number,
     backgroundColor: PropTypes.string,
     iconColor: PropTypes.string,
@@ -79,7 +80,8 @@ export default class Search extends Component {
     fontFamily: 'System',
     allDataOnEmptySearch: false,
     backCloseSize: 28,
-    fontSize: 20
+    fontSize: 20,
+    width: Dimensions.get('window').width
   }
 
   constructor(props) {
@@ -216,8 +218,10 @@ export default class Search extends Component {
       closeButton,
       closeButtonAccessibilityLabel,
       backCloseSize,
-        fontSize
+      fontSize,
+      width
     } = this.props;
+
     return (
       <Animated.View style={[styles.container, {
           top: this.state.top,
@@ -225,7 +229,7 @@ export default class Search extends Component {
       }]}>
         {
         this.state.show &&
-        <View style={[styles.navWrapper, { backgroundColor }]} >
+        <View style={[styles.navWrapper, { backgroundColor, width }]} >
           {
             Platform.OS === 'ios' && iOSPadding &&
             <View style={{ height: 20 }} />
@@ -263,6 +267,7 @@ export default class Search extends Component {
               style={[
                 styles.input,
                 {
+                  width: width-120,
                   fontSize: fontSize, color: textColor, fontFamily: fontFamily,
                   marginLeft: hideBack ? 30 : 0,
                   marginTop: (Platform.OS === 'ios' ? heightAdjust / 2 + 10 : 0)
@@ -315,7 +320,7 @@ const styles = StyleSheet.create({
     shadowRadius: 5,
   },
   navWrapper: {
-    width: Dimensions.get('window').width,
+    // width: Dimensions.get('window').width,
   },
   nav: {
     ...Platform.select({
@@ -335,6 +340,6 @@ const styles = StyleSheet.create({
         ios: { height: 30 },
         android: { height: 50 },
     }),
-    width: Dimensions.get('window').width - 120,
+    // width: Dimensions.get('window').width - 120,
   }
 });

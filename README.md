@@ -55,6 +55,7 @@ autoCorrect | boolean | `true` | AutoCorrect the search bar text.
 autoCapitalize | string | `sentences` | Auto capitialize behaviour of the text input - enum('none', 'sentences', 'words', 'characters')
 fontFamily | string | `System` | The font family to be used.
 fontSize | number | 20 | Sets the font size.
+width | number | screen width - 120 | Sets the input width.
 allDataOnEmptySearch | boolean | `false` | Search results behave as a `.filter`, returning all data when the input is an empty string.
 
 
